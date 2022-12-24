@@ -7,12 +7,10 @@ type ButtonPropsType = {
     disabled: boolean
 }
 export const Button = memo((props: ButtonPropsType) => {
-    const onClickHandler = () => {
-        props.callback()
-    }
+
     return (
         <button
-            onClick={onClickHandler}
+            onClick={props.callback}
             disabled={props.disabled}
             className={styles.btn}
         >

@@ -5,7 +5,7 @@ import {setterReducer} from "./setterReducer";
 
 export const rootReducer = combineReducers({
     counter: counterReducer,
-    setter: setterReducer
+    setter: setterReducer,
 })
 
 export const store = legacy_createStore(rootReducer)

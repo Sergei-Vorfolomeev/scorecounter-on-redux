@@ -18,7 +18,6 @@ export const setterReducer = (state: SetterType = initialState, action: GeneralA
 export type GeneralACType = SetMaxValueACType | SetStartValueACType
 export type SetMaxValueACType = ReturnType<typeof setMaxValueAC>
 export type SetStartValueACType = ReturnType<typeof setStartValueAC>
-// export type SetValuesACType = ReturnType<typeof setValuesAC>
 
 export const setMaxValueAC = (maxValue: number) => {
     return {
@@ -36,11 +35,3 @@ export const setStartValueAC = (startValue: number) => {
         }
     } as const
 }
-// export const setValuesAC = (startValue: number, maxValue: number) => {
-//     return {
-//         type: 'SET-VALUES',
-//         payload: {
-//             startValue, maxValue
-//         }
-//     } as const
-// }

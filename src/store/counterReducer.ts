@@ -27,7 +27,6 @@ export type DecreaseScoreACType = ReturnType<typeof decreaseScoreAC>
 export type ResetScoreACType = ReturnType<typeof resetScoreAC>
 export type SetValuesACType = ReturnType<typeof setValuesAC>
 
-
 export const increaseScoreAC = () => {
     return {
         type: 'INCREASE-SCORE',

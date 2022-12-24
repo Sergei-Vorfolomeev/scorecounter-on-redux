@@ -7,11 +7,7 @@ import {AppRootStateType} from "../store/store";
 import {decreaseScoreAC, increaseScoreAC, resetScoreAC} from "../store/counterReducer";
 import {CounterType, SetterType} from "../App";
 
-type CounterPropsType = {
-
-}
-
-export const Counter: React.FC<CounterPropsType> = (props) => {
+export const Counter = () => {
 
     const counter = useSelector<AppRootStateType, CounterType>(state => state.counter)
     const setter = useSelector<AppRootStateType, SetterType>(state => state.setter)
@@ -28,15 +24,18 @@ export const Counter: React.FC<CounterPropsType> = (props) => {
         dispatch(resetScoreAC(setter.startValue))
     }, [setter.startValue, dispatch]);
 
+    const disabledIncButton = counter.score === counter.maxScore || setter.startValue >= setter.maxValue
+    const disabledDecAndResetButton = counter.score === counter.startScore || setter.startValue >= setter.maxValue
+
     return (
         <div className={styles.counterBox}>
             <div className={styles.countDisplayBox}>
                 <Display/>
             </div>
             <div className={styles.buttonBox}>
-                <Button name={'inc'} callback={increaseScore} disabled={counter.score === counter.maxScore || setter.startValue >= setter.maxValue}/>
-                <Button name={'dec'} callback={decreaseScore} disabled={counter.score === counter.startScore || setter.startValue >= setter.maxValue}/>
-                <Button name={'res'} callback={resetScore} disabled={counter.score === counter.startScore || setter.startValue >= setter.maxValue}/>
+                <Button name={'inc'} callback={increaseScore} disabled={disabledIncButton}/>
+                <Button name={'dec'} callback={decreaseScore} disabled={disabledDecAndResetButton}/>
+                <Button name={'res'} callback={resetScore} disabled={disabledDecAndResetButton}/>
             </div>
         </div>
     );

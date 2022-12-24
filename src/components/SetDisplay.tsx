@@ -1,13 +1,12 @@
-import React, {ChangeEvent, FC} from 'react';
+import React, {ChangeEvent} from 'react';
 import styles from './SetDisplay.module.css'
 import {useDispatch, useSelector} from "react-redux";
 import {setMaxValueAC, setStartValueAC} from "../store/setterReducer";
 import {AppRootStateType} from "../store/store";
 import {SetterType} from "../App";
 
-type SetDisplayPropsType = {}
 
-export const SetDisplay: FC<SetDisplayPropsType> = (props: SetDisplayPropsType) => {
+export const SetDisplay = () => {
 
     const setter = useSelector<AppRootStateType, SetterType>(state => state.setter)
     const dispatch = useDispatch()
