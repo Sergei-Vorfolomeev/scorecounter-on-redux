@@ -14,7 +14,12 @@ export const counterReducer = (state: CounterType = initialState, action: Genera
             return {...state, score: action.payload.startValue}
         }
         case 'SET-VALUES': {
-            return {...state, score: action.payload.startValue, maxScore: action.payload.maxValue, startScore: action.payload.startValue }
+            return {
+                ...state,
+                score: action.payload.startValue,
+                maxScore: action.payload.maxValue,
+                startScore: action.payload.startValue
+            }
         }
         default:
             return state
