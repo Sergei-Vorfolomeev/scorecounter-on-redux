@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useCallback} from 'react';
 import styles from "../App.module.css";
 import {Display} from "./Display";
 import {Button} from "./Button";
@@ -11,7 +11,6 @@ type CounterPropsType = {
 
 }
 
-
 export const Counter: React.FC<CounterPropsType> = (props) => {
 
     const counter = useSelector<AppRootStateType, CounterType>(state => state.counter)
@@ -19,15 +18,15 @@ export const Counter: React.FC<CounterPropsType> = (props) => {
 
     const dispatch = useDispatch()
 
-    const increaseScore = () => {
+    const increaseScore = useCallback(() => {
         dispatch(increaseScoreAC())
-    }
-    const decreaseScore = () => {
+    }, [dispatch]);
+    const decreaseScore = useCallback(() => {
         dispatch(decreaseScoreAC())
-    }
-    const resetScore = () => {
+    }, [dispatch]);
+    const resetScore = useCallback(() => {
         dispatch(resetScoreAC(setter.startValue))
-    }
+    }, [setter.startValue, dispatch]);
 
     return (
         <div className={styles.counterBox}>

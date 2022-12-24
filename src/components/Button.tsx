@@ -1,11 +1,12 @@
 import styles from './Button.module.css'
+import {memo} from "react";
 
 type ButtonPropsType = {
     name: string
     callback: () => void
     disabled: boolean
 }
-export const Button = (props: ButtonPropsType) => {
+export const Button = memo((props: ButtonPropsType) => {
     const onClickHandler = () => {
         props.callback()
     }
@@ -18,4 +19,4 @@ export const Button = (props: ButtonPropsType) => {
             {props.name}
         </button>
     )
-}
+});

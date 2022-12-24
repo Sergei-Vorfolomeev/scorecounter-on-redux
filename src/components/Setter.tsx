@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useCallback} from 'react';
 import styles from "../App.module.css";
 import {SetDisplay} from "./SetDisplay";
 import {Button} from "./Button";
@@ -17,9 +17,9 @@ export const Setter: React.FC<SetterPropsType> = (props) => {
     const setter = useSelector<AppRootStateType, SetterType>(state => state.setter)
     const dispatch = useDispatch()
 
-    const setValues = () => {
+    const setValues = useCallback(() => {
         dispatch(setValuesAC(setter.startValue, setter.maxValue))
-    }
+    }, [setter.startValue, setter.maxValue, dispatch])
 
     return (
         <div className={styles.setBox}>
